@@ -1,0 +1,127 @@
+=====================================================================
+POWER BI — DAX MEASURES, CALCULATED COLUMNS & TABLES
+Copy each block into: Modeling → New measure / New column / New table
+Table names below match the CSV file names after import.
+=====================================================================
+
+---------------- NEW TABLES (Modeling → New table) ----------------
+
+Calendar =
+ADDCOLUMNS (
+    CALENDAR ( DATE ( 2020, 1, 1 ), DATE ( 2024, 12, 31 ) ),
+    "Year", YEAR ( [Date] ),
+    "Month No", MONTH ( [Date] ),
+    "Month", FORMAT ( [Date], "MMM" ),
+    "Year-Month", FORMAT ( [Date], "YYYY-MM" ),
+    "Quarter", "Q" & QUARTER ( [Date] )
+)
+-- Then: select Calendar → Table tools → Mark as date table → Date column = [Date]
+-- Sort "Month" by "Month No" (Column tools → Sort by column)
+
+-- What-if parameter for Top-N (Modeling → New parameter → Numeric range)
+--   Name: Top N, Min 3, Max 20, Increment 1, Default 5  → creates table 'Top N' with measure [Top N Value]
+
+
+---------------- MEASURES: inflation_cleaned (EDA page) ----------------
+
+Avg Inflation % = AVERAGE ( inflation_cleaned[inflation_rate] )
+
+Max Inflation % = MAX ( inflation_cleaned[inflation_rate] )
+
+Avg Interest Rate % = AVERAGE ( inflation_cleaned[interest_rate] )
+
+Avg Real Interest Rate % = AVERAGE ( inflation_cleaned[real_interest_rate] )
+
+Avg Oil Price = AVERAGE ( inflation_cleaned[oil_price] )
+
+Avg GDP Growth % = AVERAGE ( inflation_cleaned[gdp_growth] )
+
+Records = COUNTROWS ( inflation_cleaned )
+
+Countries Count = DISTINCTCOUNT ( inflation_cleaned[country] )
+
+Inflation Prev Year % =
+CALCULATE ( [Avg Inflation %], SAMEPERIODLASTYEAR ( 'Calendar'[Date] ) )
+
+Inflation YoY Change (pp) =
+IF ( NOT ISBLANK ( [Inflation Prev Year %] ), [Avg Inflation %] - [Inflation Prev Year %] )
+
+% High Inflation Months =
+DIVIDE (
+    CALCULATE ( COUNTROWS ( inflation_cleaned ), inflation_cleaned[inflation_rate] > 6 ),
+    COUNTROWS ( inflation_cleaned )
+)
+
+Country Inflation Rank =
+RANKX ( ALL ( country_metadata[country_name] ), [Avg Inflation %], , DESC, DENSE )
+
+Show In Top N =                      -- put on a visual's filter: "is 1"
+IF ( [Country Inflation Rank] <= [Top N Value], 1, 0 )
+
+Dynamic Title = "Top " & [Top N Value] & " countries by average inflation"
+
+
+---------------- MEASURES: K-Means (Clustering page) ----------------
+
+Cluster Country-Months = COUNTROWS ( kmeans_country_month )
+
+Cluster Share % =
+DIVIDE ( [Cluster Country-Months], CALCULATE ( [Cluster Country-Months], ALL ( kmeans_country_month[cluster_name] ) ) )
+
+Cluster Avg Inflation % = AVERAGE ( kmeans_country_month[inflation_rate] )
+
+Number of Clusters = DISTINCTCOUNT ( kmeans_country_month[cluster_name] )
+
+Best Silhouette = MAX ( kmeans_k_selection[silhouette] )
+
+
+---------------- MEASURES: HistGradientBoosting (Regression page) ----------------
+
+Avg Actual % = AVERAGE ( hgb_predictions[actual_inflation] )
+
+Avg Predicted % = AVERAGE ( hgb_predictions[predicted_inflation] )
+
+MAE = AVERAGE ( hgb_predictions[abs_error] )
+
+RMSE = SQRT ( AVERAGEX ( hgb_predictions, hgb_predictions[error] ^ 2 ) )
+
+R2 Score =
+VAR m = AVERAGE ( hgb_predictions[actual_inflation] )
+VAR ssRes = SUMX ( hgb_predictions, hgb_predictions[error] ^ 2 )
+VAR ssTot = SUMX ( hgb_predictions, ( hgb_predictions[actual_inflation] - m ) ^ 2 )
+RETURN 1 - DIVIDE ( ssRes, ssTot )
+-- These three recalculate when you click a country/slicer → per-country accuracy for free.
+
+Within 0.5pp % =
+DIVIDE (
+    CALCULATE ( COUNTROWS ( hgb_predictions ), hgb_predictions[abs_error] <= 0.5 ),
+    COUNTROWS ( hgb_predictions )
+)
+
+Bias (Actual - Predicted) = AVERAGE ( hgb_predictions[error] )
+
+Test Rows = COUNTROWS ( hgb_predictions )
+
+
+---------------- CALCULATED COLUMNS ----------------
+
+-- In country_metadata  (acts like a Tableau "SET": in / out)
+High Inflation Set =
+IF (
+    CALCULATE ( AVERAGE ( inflation_cleaned[inflation_rate] ) ) > 4.5,
+    "In: High-inflation set",
+    "Out"
+)
+
+-- In inflation_cleaned (manual grouping of oil price)
+Oil Price Band =
+SWITCH (
+    TRUE (),
+    inflation_cleaned[oil_price] < 60, "Cheap (<$60)",
+    inflation_cleaned[oil_price] < 90, "Normal ($60-90)",
+    "Expensive (>$90)"
+)
+
+-- In inflation_cleaned (policy stance)
+Policy Stance =
+IF ( inflation_cleaned[real_interest_rate] > 0, "Tight (real rate > 0)", "Loose (real rate <= 0)" )
