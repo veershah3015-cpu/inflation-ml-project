@@ -3,7 +3,7 @@
 **Trends, clusters and predictions using Power BI, K-Means and HistGradientBoosting**
 
 Data Visualization Mini Project · B.Tech Artificial Intelligence · MPSTME, NMIMS
-Team: [Name 1] · [Name 2] · [Name 3]  |  Guide: [Faculty name]
+Team Members: Veer Shah, Arjun Tiwari
 
 - **Live web app:** https://inflation-ml-project.vercel.app
 - **Power BI dashboard:** [paste Power BI "Publish to web" link here]
