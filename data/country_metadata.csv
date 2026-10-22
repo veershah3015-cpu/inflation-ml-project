@@ -1,0 +1,21 @@
+country,country_name,region,economy_type,latitude,longitude
+ARG,Argentina,South America,Emerging,-38.42,-63.62
+AUS,Australia,Oceania,Advanced,-25.27,133.78
+BRA,Brazil,South America,Emerging,-14.24,-51.93
+CAN,Canada,North America,Advanced,56.13,-106.35
+CHN,China,Asia,Emerging,35.86,104.20
+EU,European Union,Europe,Advanced,50.85,4.35
+GBR,United Kingdom,Europe,Advanced,55.38,-3.44
+IDN,Indonesia,Asia,Emerging,-0.79,113.92
+IND,India,Asia,Emerging,20.59,78.96
+JPN,Japan,Asia,Advanced,36.20,138.25
+KOR,South Korea,Asia,Advanced,35.91,127.77
+MEX,Mexico,North America,Emerging,23.63,-102.55
+PHL,Philippines,Asia,Emerging,12.88,121.77
+RUS,Russia,Europe,Emerging,61.52,105.32
+SAU,Saudi Arabia,Middle East,Emerging,23.89,45.08
+THA,Thailand,Asia,Emerging,15.87,100.99
+TUR,Turkey,Middle East,Emerging,38.96,35.24
+USA,United States,North America,Advanced,37.09,-95.71
+VNM,Vietnam,Asia,Emerging,14.06,108.28
+ZAF,South Africa,Africa,Emerging,-30.56,22.94
