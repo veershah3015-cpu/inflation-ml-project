@@ -1,0 +1,7 @@
+metric,train,test
+MAE,0.3876,0.3874
+RMSE,0.4885,0.4894
+R2,0.885,0.8834
+CV_R2_mean (5-fold),,0.8818
+CV_R2_std (5-fold),,0.0016
+Baseline_MAE (predict mean),,1.164

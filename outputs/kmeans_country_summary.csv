@@ -1,0 +1,21 @@
+country,country_name,region,economy_type,latitude,longitude,dominant_cluster,share_in_dominant,avg_inflation,avg_interest
+ARG,Argentina,South America,Emerging,-38.42,-63.62,"C1: Lowest Inflation, High Interest Rate",0.483,3.161,3.487
+AUS,Australia,Oceania,Advanced,-25.27,133.78,"C3: Above-avg Inflation, High Food Prices",0.383,4.169,0.553
+BRA,Brazil,South America,Emerging,-14.24,-51.93,"C3: Above-avg Inflation, High Food Prices",0.317,4.052,2.453
+CAN,Canada,North America,Advanced,56.13,-106.35,"C4: Highest Inflation, High Oil Price",0.483,4.898,0.205
+CHN,China,Asia,Emerging,35.86,104.2,"C3: Above-avg Inflation, High Food Prices",0.35,3.86,0.81
+EU,European Union,Europe,Advanced,50.85,4.35,"C4: Highest Inflation, High Oil Price",0.367,3.932,0.383
+GBR,United Kingdom,Europe,Advanced,55.38,-3.44,"C1: Lowest Inflation, High Interest Rate",0.433,4.008,4.817
+IDN,Indonesia,Asia,Emerging,-0.79,113.92,"C4: Highest Inflation, High Oil Price",0.4,4.509,0.496
+IND,India,Asia,Emerging,20.59,78.96,"C4: Highest Inflation, High Oil Price",0.4,5.472,2.623
+JPN,Japan,Asia,Advanced,36.2,138.25,"C4: Highest Inflation, High Oil Price",0.367,4.176,1.253
+KOR,South Korea,Asia,Advanced,35.91,127.77,"C3: Above-avg Inflation, High Food Prices",0.267,5.081,4.51
+MEX,Mexico,North America,Emerging,23.63,-102.55,"C4: Highest Inflation, High Oil Price",0.35,4.887,2.569
+PHL,Philippines,Asia,Emerging,12.88,121.77,"C1: Lowest Inflation, High Interest Rate",0.633,2.383,4.127
+RUS,Russia,Europe,Emerging,61.52,105.32,"C3: Above-avg Inflation, High Food Prices",0.333,4.344,3.772
+SAU,Saudi Arabia,Middle East,Emerging,23.89,45.08,"C4: Highest Inflation, High Oil Price",0.367,5.059,3.252
+THA,Thailand,Asia,Emerging,15.87,100.99,"C3: Above-avg Inflation, High Food Prices",0.317,2.924,2.05
+TUR,Turkey,Middle East,Emerging,38.96,35.24,"C1: Lowest Inflation, High Interest Rate",0.55,3.617,4.624
+USA,United States,North America,Advanced,37.09,-95.71,"C1: Lowest Inflation, High Interest Rate",0.65,3.329,5.025
+VNM,Vietnam,Asia,Emerging,14.06,108.28,"C4: Highest Inflation, High Oil Price",0.35,4.604,1.817
+ZAF,South Africa,Africa,Emerging,-30.56,22.94,"C4: Highest Inflation, High Oil Price",0.4,5.153,2.484

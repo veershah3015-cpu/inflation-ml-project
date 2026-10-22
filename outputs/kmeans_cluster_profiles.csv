@@ -1,0 +1,5 @@
+cluster_name,num_country_months,inflation_rate,interest_rate,oil_price,gdp_growth,unemployment_rate,money_supply_m2,exchange_rate_usd,food_price_index,supply_chain_index
+"C1: Lowest Inflation, High Interest Rate",283,2.97,3.94,79.09,2.1,5.52,11846.29,52.32,120.81,1.52
+"C2: Below-avg Inflation, High Supply-Chain Stress",246,4.15,2.59,40.66,1.66,6.4,9902.21,46.43,99.57,3.47
+"C3: Above-avg Inflation, High Food Prices",348,4.35,2.17,79.04,3.72,4.55,14015.03,45.28,135.7,1.54
+"C4: Highest Inflation, High Oil Price",323,5.08,1.77,93.41,2.12,5.89,11383.81,44.26,116.18,1.55
