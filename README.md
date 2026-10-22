@@ -6,7 +6,7 @@ Data Visualization Mini Project · B.Tech Artificial Intelligence · MPSTME, NMI
 Team Members: Veer Shah, Arjun Tiwari
 
 - **Live web app:** https://inflation-ml-project.vercel.app
-- **Power BI dashboard:** [paste Power BI "Publish to web" link here]
+- **Power BI dashboard:** https://app.powerbi.com/view?r=eyJrIjoiNmQyZGI3NzYtMDg4My00Y2U4LTkwYjctNDMzZGMxNjYwMDEzIiwidCI6ImQxZjE0MzQ4LWYxYjUtNGEwOS1hYzk5LTdlYmYyMTNjYmM4MSIsImMiOjEwfQ%3D%3D
 
 ---
 
